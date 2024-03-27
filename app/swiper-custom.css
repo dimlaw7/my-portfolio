@@ -1,0 +1,24 @@
+.swiper-slide {
+  /* width: 200px !important;
+  margin-right: 50px !important; */
+}
+
+/* .swiper {
+  overflow: initial !important;
+}
+
+.swiper-pagination {
+  text-align: left;
+} */
+
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 1px solid greenyellow;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 0;
+}

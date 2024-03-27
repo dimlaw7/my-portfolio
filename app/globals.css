@@ -2,6 +2,164 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .hamburger {
+    position: relative;
+    z-index: 100;
+    display: block;
+    border: none;
+    width: 30px;
+    height: 18px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+  }
+
+  .hamburger span,
+  .hamburger::before,
+  .hamburger::after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: #7ec630;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger span {
+    top: 50%;
+    transform: scale(1) translate(0, -50%);
+  }
+
+  .hamburger::before {
+    top: 0;
+  }
+
+  .hamburger::after {
+    bottom: 0;
+  }
+
+  .tile {
+    margin-left: 2em;
+    margin-top: 2em;
+    border-radius: 1.5625rem;
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+  }
+
+  .tile:hover {
+    box-shadow: 0 0 3rem #7ec630;
+  }
+
+  .tile::after {
+    content: "";
+    position: absolute;
+    top: calc(-1 * 0.5rem);
+    left: calc(-1 * 0.5rem);
+    z-index: -1;
+    width: calc(100% + 1rem);
+    height: calc(100% + 1rem);
+    background-image: linear-gradient(
+      60deg,
+      #393f60 0%,
+      rgba(126, 198, 48, 0.55) 50%,
+      #393f60 100%
+    );
+    background-size: 200% 200%;
+    border-radius: 1.5625rem;
+    animation: anim-tile 2s ease alternate infinite;
+  }
+
+  .tile__outer {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    background: #131626;
+    border: 0.625rem solid #131626;
+    border-radius: 1.5625rem;
+    overflow: hidden;
+  }
+
+  .tile__outer::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    border-radius: 15px;
+    background-image: conic-gradient(#7ec630, #7ec630);
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+    animation: rotate 2s;
+  }
+
+  .tile__outer:hover::before {
+    animation: rotate-in 10s linear infinite;
+  }
+
+  .tile__outer::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    background: #131626
+      url("https://lime-agency.io/wp-content/themes/lime-agency/img/about-tile-outer-bg.png")
+      no-repeat center/100% 100%;
+    border-radius: 0.625rem;
+  }
+
+  .tile__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-45deg);
+  }
+
+  @keyframes anim-tile {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+
+  @keyframes rotate-in {
+    0% {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(-0deg);
+    }
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
